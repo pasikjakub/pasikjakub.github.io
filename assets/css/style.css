@@ -31,6 +31,7 @@ body {
     width: 100%;
     height: 45px;
     top: 0;
+    margin-bottom: 5px;
 }
 
 .nav {
@@ -41,9 +42,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     box-shadow: 0px 16px 26px rgba(0, 0, 0, 0.1);
     top: 45px;
     left: 0;
+    
 }
 
 .navMain {
@@ -52,11 +55,12 @@ body {
     align-items: center;
     flex-direction: row;
     width: 100%;
+    margin-bottom: 5px;
 }
 
 .searchBar {
     color: #8F8F8F;
-    font-size: 12px;
+    font-size: 16px;
     width: 200px;
     height: 25px;
     border: 2px solid #8F8F8F;
@@ -64,16 +68,23 @@ body {
     padding: 4px 6px;
 }
 
+.searchBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
 .navLogo {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 8px 8px;
-    width: 140px;
-    height: 45px;
+    width: 200px;
+    height: 60px;
     border: 6px solid #2c2c2c;
     color: #2c2c2c;
-    font-size: 24px;
+    font-size: 36px;
     font-weight: 700;
 }
 
@@ -83,11 +94,55 @@ body {
     align-items: center;
     width: 264px;
     height: 56px;
+    gap: 24px;
+}
+
+.userLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #8F8F8F;
+    gap: 5px;
+}
+
+.userFavorite {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #8F8F8F;
+    gap: 5px;
+}
+
+.userCart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #8F8F8F;
+    gap: 5px;
 }
 
 .userIcons i {
-    color: #8F8F8F;
-    height: 46px;
-    width: 46px;
-    font-size: 1.2rem;
+    color: #8f8f8f;
+    font-size: 40px;
 }
+
+.categoriesNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    background-color: #ffff;
+    gap: 25px;
+}
+
+.categoriesNav a {
+    font-weight: 700;
+    color: #1e1e1e;
+    font-size: 18px;
+}
+
