@@ -488,6 +488,92 @@ a.google span{
 }
  
 
+.product_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    flex-direction: row;
+}
+
+.product_gallery {
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.product_main_img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 472px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+}
+
+.product_imgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    gap: 24px;
+}
+
+.product_imgs img {
+    height: 100px;
+    width: 100px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+
+}
 
 
+.product_info {
+    gap: 10px;
+    width: 50%;
+    height: 70%;
+}
 
+.product_name {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--color-base);
+}
+
+.product_info .product_price {
+    font-size: 28px;
+}
+
+.product_delivery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+}
+
+.truck {
+    font-size: 24px;
+}
+
+.deliv {
+    display: flex;
+    flex-direction: column;
+}
+
+.add_btn button {
+    background-color: #0092cc;
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 350px;
+    height: 50px;
+    font-weight: 700;
+    color: #ffff; 
+    cursor: pointer; 
+    border: none;
+}
+
+.add_btn button:hover {
+    background-color: #0171d3;
+}
