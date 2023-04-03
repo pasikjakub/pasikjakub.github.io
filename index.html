@@ -5,153 +5,109 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bikeshop Project</title>
+    <title>Sklep meblowy</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="./assets/css/line-awesome.min.css">
-
+    
 </head>
 
 <body>
-    <section id="main" class="main">
-        <div class="promotionNav">Z kodem EASTER -15% na wszystkie produkty</div>
-        <div class="nav">
-
-            <div class="navMain">
-                <div class="searchBar">Szukaj produktów...<i class="las la-search"></i></div>
-                <a href="#"><div class="navLogo">BIKESHOP</div></a>
-                <div class="userIcons ">
-                    <a href="login.html"><div class="userLogin">
-                        <i class="las la-user"></i>
-                        Zaloguj
-                    </div></a>
-                    <div class="userFavorite">
-                        <i class="las la-heart"></i>
-                        Ulubione
-                    </div>
-                    <div class="userCart">
-                        <i class="las la-shopping-cart"></i>
-                        Koszyk
-                    </div>
-                </div>
-            </div>
-            <div class="categoriesNav">
-                <a>ROWERY</a>
-                <a>AKCESORIA</a>
-                <a>BUTY</a>
-                <a>CZĘŚCI</a>
-                <a>ODZIEŻ I KASKI</a>
-                <a>NOWOŚCI</a>
-            </div>
-        </div>
-
-        <div class="container" style="min-height: 970px; margin-top: 250px;">
-            <div class="banner_container">
-                <div class="banner_middle1">
-                    <div class="banner_heading">
-                        <h1>ROWERY MTB</h1>
-                        <p>NAJSZERSZY WYBÓR W POLSCE</p>
-                    </div>
-                    <div class="banner_btn">
-                        SPRAWDŹ
-                    </div>
-                </div>
-                <div class="banner_middle2">
-
-                </div>
-                <div class="banner_middle3">
-
-                </div>
-                <!--<div style="text-align:center">
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>-->
-            </div>
-
-
-            <div class="recommended">
-                <h2>Polecane produkty</h2>
-                <div class="products_container">
-                    <div class="product">
-                        <img src="assets/images/large_2.jpeg" alt="">
-                        <div class="product_info">
-                            <div class="product_price">
-                                699,99
-                                <div class="product_currency">PLN</div>
-                            </div>
-                            <div class="product_desc">Rower Superfast</div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <img src="assets/images/large_2.jpeg" alt="">
-                        <div class="product_info">
-                            <div class="product_price">
-                                699,99
-                                <div class="product_currency">PLN</div>
-                            </div>
-                            <div class="product_desc">Rower Superfast</div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <img src="assets/images/large_2.jpeg" alt="">
-                        <div class="product_info">
-                            <div class="product_price">
-                                699,99
-                                <div class="product_currency">PLN</div>
-                            </div>
-                            <div class="product_desc">Rower Superfast</div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <img src="assets/images/large_2.jpeg" alt="">
-                        <div class="product_info">
-                            <div class="product_price">
-                                699,99
-                                <div class="product_currency">PLN</div>
-                            </div>
-                            <div class="product_desc">Rower Superfast</div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <img src="assets/images/large_2.jpeg" alt="">
-                        <div class="product_info">
-                            <div class="product_price">
-                                699,99
-                                <div class="product_currency">PLN</div>
-                            </div>
-                            <div class="product_desc">Rower Superfast</div>
-                        </div>
+        <nav class="navbar navbar-expand-sm navbar-light navbar-style">
+            <div class="container-fluid nav-container">
+                <a class="navbar-brand" href="index.html">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarID"
+                    aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarID" style="flex-grow: 0;">
+                    <div class="navbar-nav navbar-functions">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            Kategorie
+                        </a>
+                        <a class="nav-link active userFunctions" aria-current="page" href="login.html">
+                            <i class="las la-user"></i>
+                            Zaloguj się
+                        </a>
+                        <a class="nav-link active userFunctions" aria-current="page" href="#">
+                            <i class="lar la-heart"></i>
+                            Ulubione
+                        </a>
+                        <a class="nav-link active userFunctions" aria-current="page" href="#">
+                            <i class="las la-shopping-cart"></i>
+                            Koszyk
+                        </a>
+                        
                     </div>
                 </div>
             </div>
+        </nav>
+
+        <section id="main" class="main" style="min-height: 970px; margin-top: 130px;">
+            <div class="container">
+                <div class="row">
+                    <div class="banner_middle">
+                        <div class="banner_row">
+                            <div class="header">
+                                <h1>Kuchnie pod zabudowe</h1>
+                                <span>Najszerszy wybór w całej Polsce</span>
+                            </div>
+                            <button>Sprawdz</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-line"></div>
+
+                <div class="featured-section">
+                    <h2>Polecane</h2>
+                    <div class="row product-container">
+                        <div class="product">
+                            <img src="assets/images/krzeslo-konferencyjne-iso-24h-bl-t1001.jpg" alt="">
+                            <span class="product-name">Krzesło konferencyjne</span>
+                            <div class="product-price">
+                                <span>139,99</span>
+                                <span class="product-currency">PLN</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <img src="assets/images/krzeslo-konferencyjne-iso-24h-bl-t1001.jpg" alt="">
+                            <span class="product-name">Krzesło konferencyjne</span>
+                            <div class="product-price">
+                                <span>139,99</span>
+                                <span class="product-currency">PLN</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <img src="assets/images/krzeslo-konferencyjne-iso-24h-bl-t1001.jpg" alt="">
+                            <span class="product-name">Krzesło konferencyjne</span>
+                            <div class="product-price">
+                                <span>139,99</span>
+                                <span class="product-currency">PLN</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <img src="assets/images/krzeslo-konferencyjne-iso-24h-bl-t1001.jpg" alt="">
+                            <span class="product-name">Krzesło konferencyjne</span>
+                            <div class="product-price">
+                                <span>139,99</span>
+                                <span class="product-currency">PLN</span>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
 
 
 
 
-        </div>
 
-        <div class="footer">
-            <p>© Copyright 2023, Bikeshop</p>
-            <div class="footer_socials">
-                <a href="">
-                    <i class="lab la-twitter"></i>
-                </a>
-                <a href="">
-                    <i class="lab la-instagram"></i>
-                </a>
-                <a href="">
-                    <i class="lab la-linkedin"></i>
-                </a>
-            </div> 
-        </div>
+            </div>
+        </section>
 
-    </section>
-
-    <script>
-
-    </script>
-
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
