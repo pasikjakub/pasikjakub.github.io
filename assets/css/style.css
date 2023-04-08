@@ -65,6 +65,7 @@ body {
 @media (orientation: portrait) {
     .navbar-light .navbar-nav .nav-link.active {
         color: #ffffff;
+        text-align: center;
     }
 }
 
@@ -144,7 +145,7 @@ body {
     margin-top: 24px;
 }
 
-.products-section h2, h3 {
+.products-section h2 h3 {
     color: #ed2083;
     text-align: center;
     margin-bottom: 24px;
@@ -470,4 +471,143 @@ a.google span {
         padding: 20px 10px;
     }
 
+}
+
+.product-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+
+
+.product-main-img img {
+    height: 400px;
+    width: 400px;
+}
+
+.product-gallery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+}
+
+.product-gallery img {
+    height: 100px;
+    width: 100px;
+}
+
+.product-info {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-info h1 {
+    font-weight: bold;
+}
+
+.product-id {
+    color: #8b8b8b;
+    font-size: 12px;
+    margin-bottom: 24px;
+}
+
+.product-price {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 100px;
+}
+
+.add-btn {
+    background-color: #ed2083;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+}
+
+.favorite-btn {
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    background-color: #ffffff;
+    color: #de227d;
+    font-size: 24px;
+    margin-bottom: 32px;
+}
+
+
+.delivery-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.delivery-info i {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.delivery-info2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.dot {
+    background-color: #158e29;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.deliv-h {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.desc {
+    margin-top: 50px;
+}
+
+.product-desc {
+    margin-bottom: 30px;
+}
+
+.headings {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.product-line {
+    width: 100%;
+    height: 2px;
+    background-color: #ed2083;
+    margin-bottom: 30px;
+}
+
+.mini-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    font-size: 18px;
+}
+
+table tr {
+    background: #eeeeee;
+        
 }
