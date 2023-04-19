@@ -25,3 +25,41 @@ links.forEach(link => {
         forms.classList.toggle("show-signup")
     })
 })
+
+
+
+
+function changeFun(){
+    const heart = document.getElementById("heart").classList;
+    const favbtn = document.getElementById("favbtn").classList;
+
+    if(heart.contains("las")){
+        favbtn.remove("active")
+        heart.replace("las", "lar")
+        document.getElementById("favbtn").innerHTML =
+        document.getElementById("favbtn").innerHTML.replace("Usuń z listy ulubionych", "Dodaj do listy ulubionych");
+    }
+    else{
+        heart.replace("lar", "las")
+        favbtn.add("active")
+        document.getElementById("favbtn").innerHTML =
+        document.getElementById("favbtn").innerHTML.replace("Dodaj do listy ulubionych", "Usuń z listy ulubionych");
+    }
+    
+}
+
+function cartShow(){
+    const cBar = document.getElementById("c-bar");
+
+    cBar = cBar.style.display = "block";
+}
+
+ 
+
+function cartClose() {
+    const cBar = document.getElementById("c-bar");
+
+
+    cBar = cBar.style.display = "none";
+ 
+}
