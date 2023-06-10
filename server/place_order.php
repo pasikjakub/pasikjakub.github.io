@@ -23,22 +23,44 @@ if(isset($_POST['place_order'])){
 
     $statement->execute();
 
+    
+
+
+    //pzechowaj zamowienie w bazie
     $order_id = $statement->insert_id;
 
-    echo $order_id;
 
 
     //pobierz produkty ^
+   // $_SESSION['cart']; //[4=>[] , 5=>[]]
+    foreach($_SESSION['cart'] as $key => $value){
+        $product = $_SESSION['cart'][$key];
+        $product_id = $product['product_id'];
+        $product_name = $product['product_name'];
+        $product_image = $product['product_image'];
+        $product_price = $product['product_price'];
+        $product_quantity = $product['product_quantity'];
 
+        //kazdy pojedynnczy produkt do order_items
+        $statement1 = $db->prepare("INSERT INTO order_items (order_id, product_id, product_name, product_image, product_price, product_quantity, user_id, order_date)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-    //pzechowaj zamowienie z bazie
+        $statement1->bind_param('iissiiis', $order_id, $product_id, $product_name, $product_image, $product_price, $product_quantity, $user_id, $order_date);
 
+        $statement1->execute();
 
-    //usuniecie z koszyka
+    }
 
     
 
+
+    //usuniecie z koszyka -- jesli zaplaci
+    //unset($_SESSION['cart']);
+    
+
     //poinformowanie ze zamowienie przeszlo
+    header('location: ../payment.php?order_status=zamówienie złożone poprawnie');
+
 }
 
 ?>

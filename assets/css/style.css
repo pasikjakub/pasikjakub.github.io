@@ -894,7 +894,7 @@ th:last-child {
 }
 
 
-section.checkout h1 {
+section.checkout h1, section.register h1 {
    text-align: center;
    color: #ed2083;
 }
@@ -922,7 +922,8 @@ section.checkout h1 {
     margin-top: 20px;
 }
 
-#checkout-form .btn-checkout {
+#checkout-form .btn-checkout,
+.btn-pay {
     background-color: #ed2083;
     color: #fff;
     border: none;
@@ -933,6 +934,70 @@ section.checkout h1 {
     transition: 0.5s;
 }
 
-#checkout-form .btn-checkout:hover {
+#checkout-form .btn-checkout:hover,
+.btn-pay:hover,
+#register-btn:hover {
     background-color: #ff007b;
+}
+
+.paynow {
+    text-align: center;
+}
+
+.register .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#register-form {
+   margin-top: 2rem;
+   background: linear-gradient(136.58deg, #ffffff 23.97%, #e33bb344 146.13%);
+   padding: 20px;
+   border-radius: 5px;
+   color: #1b1b1b;
+   font-weight: 700;
+   box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.25);
+}
+
+#register-form label {
+    margin-top: 10px;
+}
+
+.requirements {
+    font-size: 13px;
+}
+
+.register-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.register-btn-container .btn {
+    font-size: 16px;
+}
+
+#login-url {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#login-url span {
+    color: #0092cc;
+}
+
+#register-btn {
+    background-color: #ed2083;
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 5px 50px;
+    transition: 0.5s;
+}
+
+#register-form p {
+    font-weight: 400;
+    text-align: center;
 }

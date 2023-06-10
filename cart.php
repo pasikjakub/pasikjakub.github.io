@@ -88,7 +88,7 @@ else if (isset($_POST['remove_product'])) {
     calculateTotal();
 
 } else {
-    header('location: index.php');
+   // header('location: index.php');
 }
 
 // obliczenie lacznej sumy
