@@ -1,0 +1,86 @@
+body {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+.admin-navbar-style {
+    background-color: #1c1c1c;
+    box-shadow: 0px 1px 23px rgba(255, 255, 255, 0.134);
+    height: 80px;
+
+}
+
+
+
+
+#add-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-product input, #add-product textarea {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+#add-product label {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+#add-product button {
+    margin-top: 10px;
+
+}
+
+.add-btn-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+
+}
+
+.add-btn-container button {
+    width: 20%;
+}
+
+
+@media (orientation: portrait) {
+    nav .show {
+        top: 80px;
+    }
+}
+
+/*edit remove page*/
+
+table {
+   color: #fff;
+   border-collapse: collapse;
+   width: 100%;
+}
+
+table tr {
+    background-color: #1c1c1c;
+    gap: 20px;
+    padding: 10px 5px;
+}
+
+table tr th {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+table tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+thead {
+    display: flex;
+    gap: 20px;
+}
+
+tbody tr td {
+    width: 120px;
+}
