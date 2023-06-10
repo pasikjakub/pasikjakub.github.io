@@ -4,6 +4,11 @@ session_start();
 
 include('server/connection.php');
 
+if(isset($_SESSION['logged_in'])){
+    header('location: account.php');
+    exit;
+}
+
 if (isset($_POST['register'])) {
 
     $name = $_POST['name'];
@@ -69,9 +74,6 @@ if (isset($_POST['register'])) {
 
 
 // jesli uzytkonik juz sie zarejestrowal
-}else if(isset($_SESSION['logged_in'])){
-    header('location: account.php');
-    exit;
 }
 
 
@@ -132,7 +134,7 @@ if (isset($_POST['register'])) {
 
 
 
-    <section id="checkout" class="register" style="min-height: 80vh; margin-top: 150px; position: relative;">
+    <section id="register" class="register" style="min-height: 80vh; margin-top: 150px; position: relative;">
         <div class="container">
         <h1>Rejestracja</h1>
         <form id="register-form" method="POST" action="register.php">

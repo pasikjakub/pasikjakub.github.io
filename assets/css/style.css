@@ -936,7 +936,7 @@ section.checkout h1, section.register h1 {
 
 #checkout-form .btn-checkout:hover,
 .btn-pay:hover,
-#register-btn:hover {
+#register-btn:hover, #login-btn:hover {
     background-color: #ff007b;
 }
 
@@ -951,7 +951,7 @@ section.checkout h1, section.register h1 {
     align-items: center;
 }
 
-#register-form {
+#register-form, #login-form, #password-change-form {
    margin-top: 2rem;
    background: linear-gradient(136.58deg, #ffffff 23.97%, #e33bb344 146.13%);
    padding: 20px;
@@ -961,7 +961,7 @@ section.checkout h1, section.register h1 {
    box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.25);
 }
 
-#register-form label {
+#login-form label,#register-form label, #password-change-form label {
     margin-top: 10px;
 }
 
@@ -980,16 +980,17 @@ section.checkout h1, section.register h1 {
     font-size: 16px;
 }
 
-#login-url {
+#login-url, #register-url {
     font-size: 14px;
     margin-top: 10px;
 }
 
-#login-url span {
+#login-url span,
+#register-url span {
     color: #0092cc;
 }
 
-#register-btn {
+#register-btn, #login-btn {
     background-color: #ed2083;
     color: #fff;
     margin-bottom: 10px;
@@ -997,7 +998,28 @@ section.checkout h1, section.register h1 {
     transition: 0.5s;
 }
 
-#register-form p {
+#login-btn {
+    margin-top: 20px;
+}
+
+#register-form p,
+#login-form p {
     font-weight: 400;
     text-align: center;
 }
+
+
+
+.account-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
