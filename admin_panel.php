@@ -60,43 +60,85 @@ if (isset($_POST['remove_product'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel administratora</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/admin_panel.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 </head>
 
 
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/"
+                        class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Admin panel</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
+                        <li class="nav-item">
+                            <a href="admin_panel.php" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-table"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Zamówienia</span></a>
+                        </li>
 
-<nav class="navbar navbar-expand-sm navbar-dark admin-navbar-style">
-        <div class="container-fluid nav-container">
-            <a class="navbar-brand" href="admin_panel.php">Główny panel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarID"
-                aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarID" style="flex-grow: 0;">
-                <div class="navbar-nav navbar-functions">
-                    <a class="nav-link active userFunctions" aria-current="page" href="admin_add_product.php">
-                        Dodawanie
-                    </a>
-                    <a class="nav-link active userFunctions" aria-current="page" href="admin_edit_product.php">
-                        Edycja
-                    </a>
-                    <a class="nav-link active userFunctions" aria-current="page" href="admin_users_edit.php">
-                        Użytkownicy
-                    </a>
+                        <li>
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Produkty</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="admin_add_product.php" class="nav-link px-0"> <span
+                                            class="d-none d-sm-inline">Dodaj</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span
+                                            class="d-none d-sm-inline">Edycja</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span
+                                            class="d-none d-sm-inline">Usuwanie</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-people"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Użytkownicy</span></a>
+                        </li>
+                    </ul>
+                    <hr>
+
+
+                    <div class="dropdown pb-4">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://avatars.githubusercontent.com/u/98429622?v=4" alt="hugenerd" width="30"
+                                height="30" class="rounded-circle">
+                            <span class="d-none d-sm-inline mx-1">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            <div class="col py-3">
+              
+
+            </div>
         </div>
-    </nav>
+    </div>
 
 
-
-
-<script src="assets/js/main.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 

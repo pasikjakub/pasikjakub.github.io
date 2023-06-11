@@ -103,7 +103,7 @@ if (isset($_GET['product_id'])) {
                             <?php echo $row['product_id']; ?>
                         </span>
 
-                        <div class="product-price">
+                        <div class="product-price" style="margin-bottom: 100px;">
                             <?php echo $row['product_price']; ?> zł
                         </div>
 

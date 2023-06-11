@@ -88,39 +88,19 @@
             <div class="products-section">
                 <h3>Nowości</h3>
                 <div class="row product-container">
-                    <div class="product">
-                        <img src="assets/images/krzeslo-konferencyjne-iso-24h-bl-t1001.jpg" alt="">
-                        <span class="product-name">Krzesło konferencyjne</span>
-                        <div class="product-price">
-                            <span>139,99</span>
-                            <span class="product-currency">PLN</span>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <img src="assets/images/krzeslo-konferencyjne-iso-24h-bl-t1001.jpg" alt="">
-                        <span class="product-name">Krzesło konferencyjne</span>
-                        <div class="product-price">
-                            <span>139,99</span>
-                            <span class="product-currency">PLN</span>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <img src="assets/images/krzeslo-konferencyjne-iso-24h-bl-t1001.jpg" alt="">
-                        <span class="product-name">Krzesło konferencyjne</span>
-                        <div class="product-price">
-                            <span>139,99</span>
-                            <span class="product-currency">PLN</span>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <img src="assets/images/krzeslo-konferencyjne-iso-24h-bl-t1001.jpg" alt="">
-                        <span class="product-name">Krzesło konferencyjne</span>
-                        <div class="product-price">
-                            <span>139,99</span>
-                            <span class="product-currency">PLN</span>
-                        </div>
-                    </div>
+                    <?php include('server/get_new_products.php') ?>
 
+                    <?php while($row = $featured_prod->fetch_assoc()){ ?>
+                    <a class="product" href="<?php echo "product.php?product_id=". $row['product_id']; ?>">
+                        <img src="assets/images/<?php echo $row['product_image']; ?>" alt="">
+                        <span class="product-name"><?php echo $row['product_name']; ?></span>
+                        <div class="product-price">
+                            <span><?php echo $row['product_price']; ?></span>
+                            <span class="product-currency">PLN</span>
+                        </div>
+                    </a>
+                    
+                        <?php } ?>
 
                 </div>
             </div>

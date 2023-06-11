@@ -79,41 +79,69 @@ function moveAndInsertImage($file)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sklep meblowy</title>
+    <title>Dodaj produkt</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/admin_panel.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-sm navbar-dark admin-navbar-style">
-        <div class="container-fluid nav-container">
-            <a class="navbar-brand" href="admin_panel.php">Główny panel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarID"
-                aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarID" style="flex-grow: 0;">
-                <div class="navbar-nav navbar-functions">
-                    <a class="nav-link active userFunctions" aria-current="page" href="admin_add_product.php">
-                        Dodawanie
-                    </a>
-                    <a class="nav-link active userFunctions" aria-current="page" href="admin_edit_product.php">
-                        Edycja
-                    </a>
-                    <a class="nav-link active userFunctions" aria-current="page" href="admin_users_edit.php">
-                        Użytkownicy
-                    </a>
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Admin panel</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <li class="nav-item">
+                        <a href="admin_panel.php" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Zamówienia</span></a>
+                    </li>
+
+                    <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Produkty</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="admin_add_product.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Dodaj</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Edycja</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Usuwanie</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Użytkownicy</span></a>
+                    </li>
+                </ul>
+                <hr>
+                
+
+                <div class="dropdown pb-4">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://avatars.githubusercontent.com/u/98429622?v=4" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                            <span class="d-none d-sm-inline mx-1">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
             </div>
         </div>
-    </nav>
-    <!-- Add Product Form -->
-<section id="add-product" class="admin-section">
-    <div class="container">
+        <div class="col py-3">
         <?php if (!empty($errors)): ?>
         <div class="error-message">
             <?php foreach ($errors as $error): ?>
@@ -121,7 +149,7 @@ function moveAndInsertImage($file)
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
-        <form id="add-product-form" method="POST" enctype="multipart/form-data" style="min-height: 50vh; margin-top: 150px; position: relative;">
+        <form id="add-product-form" method="POST" enctype="multipart/form-data" style="min-height: 50vh; margin-top: 100px; position: relative;">
             <div class="form-group">
                 <label for="product_name">Nazwa produktu</label>
                 <input type="text" class="form-control" id="product_name" name="product_name" required>
@@ -159,8 +187,10 @@ function moveAndInsertImage($file)
             </div>
             
         </form>
+        </div>
     </div>
-</section>
+</div>
+
 
 
 

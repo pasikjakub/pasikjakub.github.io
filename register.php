@@ -56,6 +56,8 @@ if (isset($_POST['register'])) {
 
             //jeslii konto zostalo poprawnie utworzone
             if($result){
+                $user_id = $q->insert_id;
+                $_SESSION['user_id'] = $user_id;
                 $_SESSION['user_email'] = $email;
                 $_SESSION['user_name'] = $name;
                 $_SESSION['logged_in'] = true;

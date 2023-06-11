@@ -1,35 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --color-body: #29323a;
+    --color-base: #0092cc;
+    --color-text: #ffffff;
+    --font-base: "Inter";
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color: #1e1e1e;
-    color: #fff;
+    background-color: var(--color-body);
+    color: var(--color-text);
+    font-family: var(--font-base), sans-serif;
 }
 
-.admin-navbar-style {
-    background-color: #1c1c1c;
-    box-shadow: 0px 1px 23px rgba(255, 255, 255, 0.134);
-    height: 80px;
-
+.nav a {
+    color: #78c5e3;
 }
 
+.nav a:hover {
+    color: #d0e9f3;
+}
 
+.nav a:focus {
+    color: #d0e9f3;
+}
 
+#add-product-form {
 
-#add-product {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
-#add-product input, #add-product textarea {
-    background-color: #1e1e1e;
+#add-product-form input,
+#add-product-form textarea {
+    background-color: var(--color-body);
     color: #fff;
+
 }
 
-#add-product label {
+#add-product-form label {
     margin-top: 10px;
     font-weight: 600;
 }
 
-#add-product button {
+#add-product-form button {
     margin-top: 10px;
 
 }
@@ -55,9 +78,9 @@ body {
 /*edit remove page*/
 
 table {
-   color: #fff;
-   border-collapse: collapse;
-   width: 100%;
+    color: #fff;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 table tr {
