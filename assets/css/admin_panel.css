@@ -31,6 +31,8 @@ body {
     color: #d0e9f3;
 }
 
+
+
 #add-product-form {
 
     display: flex;
@@ -80,11 +82,12 @@ body {
 table {
     color: #fff;
     border-collapse: collapse;
-    width: 100%;
+    width: 50%;
+
 }
 
 table tr {
-    background-color: #1c1c1c;
+    background-color: #363f48;
     gap: 20px;
     padding: 10px 5px;
 }
@@ -92,11 +95,15 @@ table tr {
 table tr th {
     font-size: 18px;
     font-weight: 400;
+    margin-right: 80px;
+    margin-left: 10px;
 }
 
 table tr {
     display: flex;
     justify-content: space-between;
+    margin-right: 80px;
+    margin-left: 50px;
 }
 
 thead {
@@ -106,4 +113,8 @@ thead {
 
 tbody tr td {
     width: 120px;
+}
+
+.table-header {
+    width: 100%;
 }

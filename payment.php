@@ -14,9 +14,10 @@ session_start();
         <div class="container">
         <h1 style="margin-bottom: 5rem;">Zapłać</h1>
         <p><?php if(isset($_GET['order_status'])) { echo $_GET['order_status']; } ?></p>
-        <p>Do zapłaty: <?php echo $_SESSION['total'] ?>zł</p>
+        <p>Do zapłaty: <?php if(isset($_SESSION['total'])) { echo $_SESSION['total']; } ?>zł</p>
+        <?php if(isset($_SESSION['total'])) { ?>
         <input class="btn-pay" type="submit" value="Pay now" />
-
+            <?php } ?>
         </div>
 
     </section>

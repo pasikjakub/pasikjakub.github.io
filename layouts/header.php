@@ -27,7 +27,9 @@
                     </a>
                     <a class="nav-link active userFunctions" aria-current="page" href="login.php">
                         <i class="las la-user"></i>
-                        Zaloguj się
+                        <?php if(isset($_SESSION['logged_in'])) {
+                             echo "Profil";
+                             } else { echo "Zaloguj się"; } ?>
                     </a>
                     <a class="nav-link active userFunctions" aria-current="page" href="#">
                         <i class="lar la-heart"></i>

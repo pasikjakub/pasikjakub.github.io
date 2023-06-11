@@ -165,17 +165,4 @@ if(isset($_SESSION['logged_in'])){
 
 
 
-    <div class="newsletter-container">
-        <h4>Zapisz się do newslettera!</h4>
-        <div class="">
-            <div class="newsletter-form">
-                <input class="sub-form" type="text" placeholder="Podaj swój email">
-                <button class="subscribe-btn">Zasubskrybuj</button>
-            </div>
-
-        </div>
-    </div>
-    <div class="faq-container"></div>
-
-
     <?php include('layouts/footer.php'); ?>

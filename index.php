@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    
+?>
+
+
+
 
 <?php include('layouts/header.php'); ?>
 
