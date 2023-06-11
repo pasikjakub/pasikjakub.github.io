@@ -38,13 +38,13 @@ if (isset($_POST['login_btn'])) {
             $_SESSION['logged_in'] = true;
 
             if ($user_type == 1) {
-                // User login
+                // user
                 header('location: account.php?message=zalogowano poprawnie');
             } elseif ($user_type == 2) {
-                // Admin login
+                // admin
                 header('location: admin/admin_panel.php');
             } else {
-                // Unknown user type, handle the error appropriately
+                // Unknown user
                 header('location: login.php?error=bledny login lub haslo');
             }
             exit;

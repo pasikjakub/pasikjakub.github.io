@@ -3,7 +3,6 @@ session_start();
 
 include('admin_check_userType.php');
 
-// Include the necessary files and initialize the database connection
 include('../server/connection.php');
 
 

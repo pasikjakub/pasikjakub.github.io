@@ -16,49 +16,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-    // If validation passes, proceed to insert the product into the database
+    // if validation pass wstaw
     if (empty($errors)) {
-        // Process the uploaded images
+        
         $product_image = moveAndInsertImage($_FILES['product_image']);
         $product_image2 = moveAndInsertImage($_FILES['product_image2']);
         $product_image3 = moveAndInsertImage($_FILES['product_image3']);
         $product_image4 = moveAndInsertImage($_FILES['product_image4']);
 
-        // Prepare the SQL statement to insert a new product
+
         $stmt = $db->prepare("INSERT INTO products (product_name, product_category, product_description, product_image, product_image2, product_image3, product_image4, product_price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssssssd", $product_name, $product_category, $product_description, $product_image, $product_image2, $product_image3, $product_image4, $product_price);
 
-        // Execute the statement
+
         if ($stmt->execute()) {
-            // Product inserted successfully
+
             header('Location: admin_remove_product.php');
             exit();
         } else {
-            // Failed to insert the product
+
             $errors[] = "Failed to add the product. Please try again.";
         }
 
-        // Close the statement
+
         $stmt->close();
     }
 }
 
-// Function to move the uploaded image to the assets/images directory and return the filename with extension
+// przenoszenie zdjecia do folderu z assetami
 function moveAndInsertImage($file)
 {
     $targetDirectory = '../assets/images/';
     $targetFile = $targetDirectory . basename($file['name']);
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-    // Generate a unique filename to prevent conflicts
+    // unikalna nazwa
     $filename = uniqid() . '.' . $imageFileType;
 
-    // Move the uploaded file to the target directory
+
     if (move_uploaded_file($file['tmp_name'], $targetDirectory . $filename)) {
         return $filename;
     }
 
-    return ''; // Return an empty string if there was an error moving the file
+    return ''; //pusty string jesli error
 }
 
 

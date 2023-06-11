@@ -10,16 +10,16 @@ include('server/connection.php');
 $errors = [];
 
 if (isset($_GET['id'])) {
-    // Process the request for removing a product
+    
     $productId = $_GET['id'];
 
-    // Delete the product from the database
+    
     $query = $db->prepare("DELETE FROM products WHERE product_id = ?");
     $query->bind_param("i", $productId);
     $query->execute();
     $query->close();
 
-    // Redirect back to the admin panel page after removing the product
+    
     header('Location: admin_remove_product.php');
     exit;
 }
