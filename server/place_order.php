@@ -3,6 +3,13 @@
 session_start();
 include('connection.php');
 
+
+if(!isset($_SESSION['logged_in'])) {
+    header('location: ../login.php');
+    exit;
+}
+
+
 if(isset($_POST['place_order'])){
 
     //pobierz informacje uzytkownika i przechowaj w bazie
@@ -16,12 +23,23 @@ if(isset($_POST['place_order'])){
     $user_id = $_SESSION['user_id'];
     $order_date = date('Y-m-d H:i:s');
 
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header('location: index.php');
+        exit;
+    }
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
     $statement = $db->prepare("INSERT INTO orders (order_cost, order_status, user_id, user_phone, user_city, user_address, order_date)
     VALUES (?, ? ,?, ?, ? ,?, ?);");
 
     $statement->bind_param('isiisss', $order_cost, $order_status, $user_id, $phone, $city, $address, $order_date);
 
-    $statement->execute();
+    $q_status = $statement->execute();
+
+    if (!$q_status) {
+        header('location: index.php');
+        exit;
+    }
 
     
 

@@ -1,27 +1,20 @@
 <?php
 session_start();
 
-// Check if the user is logged in and is an admin
-// if (!isset($_SESSION['logged_in']) || $_SESSION['role'] !== 'admin') {
-//     header('Location: login.php');
-//     exit();
-// }
+include('admin_check_userType.php');
 
-// Include the necessary files and establish a database connection
-include('server/connection.php');
+include('../server/connection.php');
 
-// Define an empty array to store any potential error messages
 $errors = [];
 
-// Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve the form data
+
     $product_name = $_POST['product_name'];
     $product_category = $_POST['product_category'];
     $product_description = $_POST['product_description'];
     $product_price = $_POST['product_price'];
 
-    // Validate the form data (perform necessary validation checks)
+
 
     // If validation passes, proceed to insert the product into the database
     if (empty($errors)) {
@@ -53,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Function to move the uploaded image to the assets/images directory and return the filename with extension
 function moveAndInsertImage($file)
 {
-    $targetDirectory = 'assets/images/';
+    $targetDirectory = '../assets/images/';
     $targetFile = $targetDirectory . basename($file['name']);
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
@@ -71,7 +64,7 @@ function moveAndInsertImage($file)
 
 ?>
 
-<?php include('layouts/sidebar.php'); ?>
+<?php include('../layouts/sidebar.php'); ?>
 
 <div class="col py-3">
     <?php if (!empty($errors)): ?>
@@ -128,9 +121,4 @@ function moveAndInsertImage($file)
 
 
 
-<script src="assets/js/main.js"></script>
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+<?php include('../layouts/admin_footer.php') ?>

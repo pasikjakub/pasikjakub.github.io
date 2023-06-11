@@ -3,8 +3,12 @@
 session_start();
 include('server/connection.php');
 
-if(isset($_SESSION['logged_in'])){
+if (isset($_SESSION['logged_in']) && $_SESSION['user_type'] == 1) {
     header('location: account.php');
+    exit;
+}
+else if(isset($_SESSION['logged_in']) && $_SESSION['user_type'] == 2){
+    header('location: admin/admin_panel.php');
     exit;
 }
 
@@ -13,12 +17,16 @@ if (isset($_POST['login_btn'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header('location: login.php?error=bledny login lub haslo');
+        exit;
+    }
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-    $q = $db->prepare("SELECT user_id, user_name, user_email, user_password FROM users WHERE user_email = ? LIMIT 1");
+    $q = $db->prepare("SELECT user_id, user_name, user_email, user_password, user_type FROM users WHERE user_email = ? LIMIT 1");
     $q->bind_param("s", $email);
     $q->execute();
-    $q->bind_result($user_id, $user_name, $user_email, $user_password);
+    $q->bind_result($user_id, $user_name, $user_email, $user_password, $user_type);
     $q->store_result();
 
     if ($q->num_rows() == 1 && $q->fetch()) {
@@ -26,8 +34,19 @@ if (isset($_POST['login_btn'])) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_name'] = $user_name;
             $_SESSION['user_email'] = $user_email;
+            $_SESSION['user_type'] = $user_type;
             $_SESSION['logged_in'] = true;
-            header('location: account.php?message=zalogowano poprawnie');
+
+            if ($user_type == 1) {
+                // User login
+                header('location: account.php?message=zalogowano poprawnie');
+            } elseif ($user_type == 2) {
+                // Admin login
+                header('location: admin/admin_panel.php');
+            } else {
+                // Unknown user type, handle the error appropriately
+                header('location: login.php?error=bledny login lub haslo');
+            }
             exit;
         } else {
             header('location: login.php?error=bledny login lub haslo');
@@ -38,11 +57,8 @@ if (isset($_POST['login_btn'])) {
         exit;
     }
 }
-
-
-
-
 ?>
+
 
 
 

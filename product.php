@@ -2,26 +2,30 @@
 
 include('server/connection.php');
 
+
 if (isset($_GET['product_id'])) {
 
     $product_id = $_GET['product_id'];
-    $statement = $db->prepare("SELECT * FROM products WHERE product_id = ?");
-    $statement->bind_param("i", $product_id);
-    $statement->bind_param("i", $product_id);
 
-    $statement->execute();
+    // weryfikowanie i czyszczenie id produktu
+    if (!is_numeric($product_id)) {
+        // niepoprawne id, 
+        header('location: index.php');
+    } else {
+        
+        $statement = $db->prepare("SELECT * FROM products WHERE product_id = ?");
+        $statement->bind_param("i", $product_id);
 
-    $product = $statement->get_result();
+        $statement->execute();
 
+        $product = $statement->get_result();
 
-
-
-
+       
+    }
 } else {
     // header('location: index.php');
 }
 ?>
-
 
 
 

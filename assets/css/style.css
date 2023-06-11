@@ -89,7 +89,7 @@ body {
 .banner_middle {
     width: 100%;
     height: 350px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url(/assets/images/pexels-mark-mccammon-1080721.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url(../images/pexels-mark-mccammon-1080721.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -606,7 +606,7 @@ table tr {
     width: 100%;
     height: 300px;
     margin-bottom: 24PX;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url(/assets/images/pexels-efrem-efre-14393589.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url(../images/pexels-efrem-efre-14393589.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

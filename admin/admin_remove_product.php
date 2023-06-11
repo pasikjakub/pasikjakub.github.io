@@ -1,11 +1,7 @@
 <?php
 session_start();
 
-// Check if the user is logged in and is an admin
-// if (!isset($_SESSION['logged_in']) || $_SESSION['role'] !== 'admin') {
-//     header('Location: login.php');
-//     exit();
-// }
+include('admin_check_userType.php');
 
 // Include the necessary files and establish a database connection
 include('server/connection.php');
@@ -84,9 +80,4 @@ if (isset($_GET['id'])) {
     </table>
 </div>
 
-<script src="assets/js/main.js"></script>
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+<?php include('../layouts/admin_footer.php') ?>

@@ -14,6 +14,10 @@ if (isset($_POST['register'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     //czyszczenie emailu
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header('location: register.php?error=Niepoprawny email');
+        exit;
+    }
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
@@ -48,7 +52,7 @@ if (isset($_POST['register'])) {
             //jesli nie ma
         } else {
             //tworzenie uzytkownika
-            $q = $db->prepare("INSERT INTO users VALUES (NULL, ?, ?, ?)");
+            $q = $db->prepare("INSERT INTO users VALUES (NULL, ?, ?, ?, 1)");
             $passwordHash = password_hash($password, PASSWORD_ARGON2I);
             $q->bind_param('sss', $name, $email, $passwordHash);
 
