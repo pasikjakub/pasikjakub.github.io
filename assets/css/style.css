@@ -848,3 +848,39 @@ section.checkout h1, section.register h1 {
     justify-content: space-evenly;
 }
 
+.acccount-info-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.acccount-info-section .product-cart-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.acccount-info-section th {
+    padding: 5px 10px;
+    color: #fff;
+    background-color: #ed2083;
+}
+
+.acccount-info-section td {
+    padding: 10px 20px;
+    background-color: #fcfcfc;
+}
+.acccount-info-section td img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.acccount-info-section tr {
+    border-bottom: solid 0.2rem #1e1e1e;
+    border-right: solid 0.2rem #1e1e1e;
+    border-left: solid 0.2rem #1e1e1e;
+}
+
+.acccount-info-section .xd {
+    border-bottom: none;
+    border-top: solid 0.2rem #1e1e1e;;
+}

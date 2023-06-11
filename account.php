@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include('server/connection.php');
 
 if(!isset($_SESSION['logged_in'])){
     header('location: login.php');
@@ -24,7 +25,7 @@ if (isset($_POST['change_password'])) {
     $new_password_confirm = $_POST['new_passwordConfirm'];
 
     
-    include('server/connection.php');
+    
 
     
     $user_id = $_SESSION['user_id'];
@@ -66,61 +67,28 @@ if (isset($_POST['change_password'])) {
 }
 
 
+//pobranie zamowien
+if(isset($_SESSION['logged_in'])){
+    $stmt = $db->prepare("SELECT * FROM orders WHERE user_id=? ");
+
+    $user_id = $_SESSION['user_id'];
+    $stmt->bind_param('i', $user_id);
+
+    $stmt->execute();
+    
+    $orders = $stmt->get_result();
+}
+
 
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sklep meblowy</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-sm navbar-light navbar-style">
-        <div class="container-fluid nav-container">
-            <a class="navbar-brand" href="index.php">Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarID"
-                aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarID" style="flex-grow: 0;">
-                <div class="navbar-nav navbar-functions">
-                    <a class="nav-link active" aria-current="page" href="#">
-                        Kategorie
-                    </a>
-                    <a class="nav-link active userFunctions" aria-current="page" href="login.php">
-                        <i class="las la-user"></i>
-                        Zaloguj się
-                    </a>
-                    <a class="nav-link active userFunctions" aria-current="page" href="#">
-                        <i class="lar la-heart"></i>
-                        Ulubione
-                    </a>
-                    <a class="nav-link active userFunctions" aria-current="page" href="cart.php">
-                        <i class="las la-shopping-cart"></i>
-                        Koszyk
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </nav>
-
+<?php include('layouts/header.php'); ?>
 
 
     <section id="account" class="acccount-info-section" style="min-height: 50vh; margin-top: 150px; position: relative;">
         <div class="container">
-            <h1>Twój profil</h1>
+            <h1 style="text-align: center;">Twój profil</h1>
             <div class="product-line"></div>
             <div class="info-row">
                 <div class="account-info">
@@ -132,7 +100,7 @@ if (isset($_POST['change_password'])) {
                     <a href="account.php?logout=1" name="logout" id="logout-btn">Wyloguj się</a>
                 </div>
                 <div class="user-password-change">
-                    <h2 style="text-align: center;">Zmmiana hasła</h2>
+                    <h2 style="text-align: center;">Zmiana hasła</h2>
                     <form id="password-change-form" method="POST" action="account.php">
                         <div class="form-group">
                             <label>Stare hasło</label>
@@ -160,15 +128,37 @@ if (isset($_POST['change_password'])) {
     </section>
     <section id="orders" class="acccount-info-section" style="min-height: 100vh; margin-top: 150px; position: relative;">
         <div class="container">
-                <div class="account-info">
-                    <h1>Twoje zamówienia</h1>
-                    <div class="product-line"></div>
-                    <p>Imię: Jan</p>
-                    <p>Email: kowalskijannusz@wp.pl</p>
-                    <a href="#orders" id="account-orders">Twoje zamówienia</a>
-                    <a href="#change-password" id="changepasswd-btn">Zmień hasło</a>
-                    <a href="account.php?logout=1" id="logout-btn">Wyloguj się</a>
-                </div>
+        <h3 style="text-align: center;">Zamówienia</h3>
+            <div class="product-line"></div>
+            <table class="mt-5 pt-5">
+                <tr class="xd">
+                    <th>ID Zamówienia</th>
+                    <th>Koszt zamówienia</th>
+                    <th>Status zamówienia</th>
+                    <th>Data zamówienia</th>
+                </tr>
+                <?php while($row = $orders->fetch_assoc()) { ?>
+                <tr>
+                    <td>
+                        <div class="product-cart-info">
+                            <!-- <img src="" /> -->
+                            <div>
+                                <p class="mt-3"><?php echo $row['order_id']; ?></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span><?php echo $row['order_cost']; ?></span>
+                    </td>
+                    <td>
+                        <span><?php echo $row['order_status']; ?></span>
+                    </td>
+                    <td>
+                        <span><?php echo $row['order_date']; ?></span>
+                    </td>
+                </tr>
+                <?php } ?>
+            </table>
         </div>
 
     </section>
@@ -188,10 +178,4 @@ if (isset($_POST['change_password'])) {
     <div class="faq-container"></div>
 
 
-
-    <script src="assets/js/main.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+    <?php include('layouts/footer.php'); ?>
