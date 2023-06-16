@@ -40,11 +40,11 @@ if (isset($_POST['register'])) {
 
     //jesli nie pasuja do siebie
     if ($password !== $confirmPassword) {
-        header('location: register.php?error=passwords dont match');
+        header('location: register.php?error=Hasła do siebie nie pasują');
     }
     // jesli spelnia wymagania
     else if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 6) {
-        header('location: register.php?error=passwords must match all requirements');
+        header('location: register.php?error=Hasło musi spełniać wszystkie wymagania');
     }
     // jesli nie ma errorow
     else {
@@ -58,7 +58,7 @@ if (isset($_POST['register'])) {
 
         //jesli jest juz uzytkownik z takim mailem
         if ($num_rows != 0) {
-            header('location: register.php?error=user with this email already exist');
+            header('location: register.php?error=Użytkownik z takim emailem już istnieje');
 
             //jesli nie ma
         } else {
@@ -115,7 +115,7 @@ if (isset($_POST['register'])) {
 
                     // nie zostalo utworzone
                 } else {
-                    header('location: register.php?error=cos poszlo nie tak');
+                    header('location: register.php?error=Coś poszło nie tak');
                 }
 
             } catch (Exception $error) {

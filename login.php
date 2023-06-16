@@ -18,7 +18,7 @@ if (isset($_POST['login_btn'])) {
     $password = $_POST['password'];
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header('location: login.php?error=bledny login lub haslo');
+        header('location: login.php?error=Błedny login lub hasło');
         exit;
     }
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -48,19 +48,19 @@ if (isset($_POST['login_btn'])) {
                 header('location: admin/admin_panel.php');
             } else {
                 // Unknown user
-                header('location: login.php?error=bledny login lub haslo');
+                header('location: login.php?error=Błedny login lub hasło');
             }
             exit;
         } else {
-            header('location: login.php?error=bledny login lub haslo');
+            header('location: login.php?error=Błedny login lub hasło');
             exit;
         }
     }else {
-        header('location: login.php?error=bledny login lub haslo');
+        header('location: login.php?error=Błedny login lub hasło');
         exit;
     }
     } else {
-        header('location: login.php?error=bledny login lub haslo');
+        header('location: login.php?error=Błedny login lub hasło');
         exit;
     }
 }
