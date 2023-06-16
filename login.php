@@ -23,18 +23,21 @@ if (isset($_POST['login_btn'])) {
     }
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-    $q = $db->prepare("SELECT user_id, user_name, user_email, user_password, user_type FROM users WHERE user_email = ? LIMIT 1");
+    $q = $db->prepare("SELECT user_id, user_name, user_email, user_password, user_type, is_active FROM users WHERE user_email = ? LIMIT 1");
     $q->bind_param("s", $email);
     $q->execute();
-    $q->bind_result($user_id, $user_name, $user_email, $user_password, $user_type);
+    $q->bind_result($user_id, $user_name, $user_email, $user_password, $user_type, $is_active);
     $q->store_result();
 
     if ($q->num_rows() == 1 && $q->fetch()) {
+
+        if($is_active == 1) {
         if (password_verify($password, $user_password)) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_name'] = $user_name;
             $_SESSION['user_email'] = $user_email;
             $_SESSION['user_type'] = $user_type;
+            $_SESSION['user_type'] = $is_active;
             $_SESSION['logged_in'] = true;
 
             if ($user_type == 1) {
@@ -52,6 +55,10 @@ if (isset($_POST['login_btn'])) {
             header('location: login.php?error=bledny login lub haslo');
             exit;
         }
+    }else {
+        header('location: login.php?error=bledny login lub haslo');
+        exit;
+    }
     } else {
         header('location: login.php?error=bledny login lub haslo');
         exit;
