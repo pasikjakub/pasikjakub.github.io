@@ -10,6 +10,7 @@ if(isset($_GET['logout'])){
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         unset($_SESSION['user_type']);
+        unset($_SESSION['is_active']);
         header('location: ../login.php');
         exit;
     }

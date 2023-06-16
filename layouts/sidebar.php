@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/admin_panel.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +43,7 @@
                                 <a href="admin_add_product.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Dodaj</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Edycja</span></a>
+                                <a href="admin_edit_product.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Edycja</span></a>
                             </li>
                             <li>
                                 <a href="admin_remove_product.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Usuwanie</span></a>

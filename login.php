@@ -37,13 +37,13 @@ if (isset($_POST['login_btn'])) {
             $_SESSION['user_name'] = $user_name;
             $_SESSION['user_email'] = $user_email;
             $_SESSION['user_type'] = $user_type;
-            $_SESSION['user_type'] = $is_active;
+            $_SESSION['is_active'] = $is_active;
             $_SESSION['logged_in'] = true;
 
             if ($user_type == 1) {
                 // user
                 header('location: account.php?message=zalogowano poprawnie');
-            } elseif ($user_type == 2) {
+            } else if ($user_type == 2) {
                 // admin
                 header('location: admin/admin_panel.php');
             } else {

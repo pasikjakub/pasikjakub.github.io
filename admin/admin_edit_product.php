@@ -3,180 +3,135 @@ session_start();
 
 include('admin_check_userType.php');
 
-
-include('server/connection.php');
-
+include('../server/connection.php');
 
 $errors = [];
 
-if (isset($_POST['edit_product'])) {
-    $productId = $_POST['product_id'];
-    $productName = $_POST['product_name'];
-    $category = $_POST['product_category'];
-    $description = $_POST['product_description'];
-    $price = $_POST['product_price'];
-
-    $query = $db->prepare("UPDATE products SET product_name = ?, product_category = ?, product_description = ?, product_price = ? WHERE product_id = ?");
-    $query->bind_param("sssdi", $productName, $category, $description, $price, $productId);
-    $query->execute();
-    $query->close();
-
-
-    header('Location: admin_panel.php');
-    exit;
+$productNamesQuery = $db->query("SELECT product_name FROM products");
+$productNames = [];
+while ($row = $productNamesQuery->fetch_assoc()) {
+    $productNames[] = $row['product_name'];
+    
 }
 
-if (isset($_POST['remove_product'])) {
+include('move_images.php');
 
-    $productId = $_POST['product_id'];
 
-    $query = $db->prepare("DELETE FROM products WHERE product_id = ?");
-    $query->bind_param("i", $productId);
-    $query->execute();
-    $query->close();
+if (isset($_POST['edit_product'])) {
+    $productName = $_POST['product_name'];
+    $fieldToEdit = $_POST['field_to_edit'];
+    
+    if ($fieldToEdit === 'product_image' || $fieldToEdit === 'product_image2' || $fieldToEdit === 'product_image3' || $fieldToEdit === 'product_image4') {
+        
+        $file = $_FILES['new_value'];
+        
+        
+        if ($file['error'] === UPLOAD_ERR_OK) {
+            $newValue = moveAndInsertImage($file);
+            
+            if (!empty($newValue)) {
+                
+                $updateQuery = $db->prepare("UPDATE products SET $fieldToEdit = ? WHERE product_name = ?");
+                $updateQuery->bind_param("ss", $newValue, $productName);
+                $updateQuery->execute();
+                $updateQuery->close();
+                
+                header('location: admin_panel.php');
+                exit;
+            } else {
+                
+                header('location: admin_panel.php?error=Failed to process the file');
+                exit;
+            }
+        } else {
+            
+            header('location: admin_panel.php?error=' . $file['error']);
+            exit;
+        }
+    } else {
+        
+        $newValue = $_POST['new_value'];
 
-    header('Location: admin_panel.php');
-    exit;
+        
+        $updateQuery = $db->prepare("UPDATE products SET $fieldToEdit = ? WHERE product_name = ?");
+        $updateQuery->bind_param("ss", $newValue, $productName);
+        $updateQuery->execute();
+        $updateQuery->close();
+
+        header('location: admin_panel.php');
+        exit;
+    }
 }
 
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sklep meblowy</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/admin_panel.css">
-
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-sm navbar-dark admin-navbar-style">
-        <div class="container-fluid nav-container">
-            <a class="navbar-brand" href="admin_panel.php">Główny panel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarID"
-                aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarID" style="flex-grow: 0;">
-                <div class="navbar-nav navbar-functions">
-                    <a class="nav-link active userFunctions" aria-current="page" href="admin_add_product.php">
-                        Dodawanie
-                    </a>
-                    <a class="nav-link active userFunctions" aria-current="page" href="#">
-                        Edycja
-                    </a>
-                    <a class="nav-link active userFunctions" aria-current="page" href="admin_users_edit.php">
-                        Użytkownicy
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Add Product Form -->
-    <section id="edit-product" class="admin-section" style="min-height: 50vh; margin-top: 150px; position: relative;">
-        <div class="container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Product Category</th>
-                        <th>Product Description</th>
-                        <th>Product Image</th>
-                        <th>Product Image 2</th>
-                        <th>Product Image 3</th>
-                        <th>Product Image 4</th>
-                        <th>Product Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // Fetch products from the database
-                    $query = $db->query("SELECT * FROM products");
-                    while ($row = $query->fetch_assoc()) {
-                        $productID = $row['product_id'];
-                        $productName = $row['product_name'];
-                        $productCategory = $row['product_category'];
-                        $productDescription = $row['product_description'];
-                        $productImage = $row['product_image'];
-                        $productImage2 = $row['product_image2'];
-                        $productImage3 = $row['product_image3'];
-                        $productImage4 = $row['product_image4'];
-                        $productPrice = $row['product_price'];
-                        ?>
-                        <tr>
-                            <td>
-                                <?php echo $productName; ?>
-                            </td>
-                            <td>
-                                <?php echo $productCategory; ?>
-                            </td>
-                            <td>
-                                <?php echo $productDescription; ?>
-                            </td>
-                            <td>
-                                <?php
-                                $imagePath = 'assets/images/' . basename($productImage);
-                                if (!file_exists($imagePath)) {
-                                    copy($productImage, $imagePath);
-                                }
-                                ?>
-                                <img src="<?php echo $imagePath; ?>" alt="<?php echo $productName; ?>" width="100">
-                            </td>
-                            <td>
-                                <?php
-                                $imagePath2 = 'assets/images/' . basename($productImage2);
-                                if (!file_exists($imagePath2)) {
-                                    copy($productImage2, $imagePath2);
-                                }
-                                ?>
-                                <img src="<?php echo $imagePath2; ?>" alt="<?php echo $productName; ?>" width="100">
-                            </td>
-                            <td>
-                                <?php
-                                $imagePath3 = 'assets/images/' . basename($productImage3);
-                                if (!file_exists($imagePath3)) {
-                                    copy($productImage3, $imagePath3);
-                                }
-                                ?>
-                                <img src="<?php echo $imagePath3; ?>" alt="<?php echo $productName; ?>" width="100">
-                            </td>
-                            <td>
-                                <?php
-                                $imagePath4 = 'assets/images/' . basename($productImage4);
-                                if (!file_exists($imagePath4)) {
-                                    copy($productImage4, $imagePath4);
-                                }
-                                ?>
-                                <img src="<?php echo $imagePath4; ?>" alt="<?php echo $productName; ?>" width="100">
-                            </td>
-                            <td>
-                                <?php echo $productPrice; ?>
-                            </td>
-                            <td>
-                                <!-- Edit button -->
-                                <a href="edit_product.php?id=<?php echo $productID; ?>">Edit</a>
-                                <!-- Delete button -->
-                                <a href="delete_product.php?id=<?php echo $productID; ?>">Delete</a>
-                            </td>
-                        </tr>
-                        <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-    </section>
+<?php include('../layouts/sidebar.php'); ?>
 
 
+<form id="edit-product-form" method="post" action="" enctype="multipart/form-data" style="max-width: 700px">
+    <label for="product_name">Wybierz produkt:</label>
+    <select name="product_name" id="product_name">
+        <?php foreach ($productNames as $productName) { ?>
+            <option value="<?php echo $productName; ?>"><?php echo $productName; ?></option>
+        <?php } ?>
+    </select>
 
-    <?php include('../layouts/admin_footer.php') ?>
+    
+
+    <label for="field_to_edit">Wybierz co chcesz edytować:</label>
+    <select name="field_to_edit" id="field_to_edit">
+        <?php
+        
+        $columnsQuery = $db->query("SHOW COLUMNS FROM products");
+        $columns = [];
+        while ($row = $columnsQuery->fetch_assoc()) {
+            $columnName = $row['Field'];
+            if ($columnName != 'product_name') {
+                $columns[] = $columnName;
+            }
+        }
+
+        foreach ($columns as $column) { ?>
+            <option value="<?php echo $column; ?>"><?php echo $column; ?></option>
+        <?php } ?>
+    </select>
+
+    
+
+    <label for="new_value">Wprowadź nową wartość:</label>
+    <div id="new_value_container">
+        <input type="text" name="new_value" id="new_value">
+    </div>
+
+   <br></br>
+
+    <button class="btn btn-primary" type="submit" name="edit_product" value="Edit Product">Edytuj</button>
+</form>
+
+<script>
+    // Update input type based on the selected field
+    $(document).ready(function() {
+        let newValueContainer = $('#new_value_container');
+        let newValueInput = $('#new_value');
+        let defaultInputType = newValueInput.prop('tagName').toLowerCase();
+
+        $('#field_to_edit').change(function() {
+            var selectedField = $(this).val();
+
+            if (selectedField === 'product_description') {
+                // Change input type to "textarea" for product_description field
+                newValueContainer.html('<textarea name="new_value" id="new_value"></textarea>');
+            } else if (selectedField === 'product_image' || selectedField === 'product_image2' || selectedField === 'product_image3' || selectedField === 'product_image4') {
+                // Change input type to "file" for product_image fields
+                newValueContainer.html('<input type="file" name="new_value" id="new_value">');
+            } else {
+                // Change input type to "text" for other fields
+                newValueContainer.html('<input type="' + defaultInputType + '" name="new_value" id="new_value">');
+            }
+        });
+    });
+</script>
+
+<?php include('../layouts/admin_footer.php') ?>

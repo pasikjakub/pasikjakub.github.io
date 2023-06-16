@@ -3,10 +3,10 @@ session_start();
 
 include('admin_check_userType.php');
 
-// Include the necessary files and establish a database connection
-include('server/connection.php');
 
-// Define an empty array to store any potential error messages
+include('../server/connection.php');
+
+
 $errors = [];
 
 if (isset($_GET['id'])) {
@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<?php include('layouts/sidebar.php'); ?>
+<?php include('../layouts/sidebar.php'); ?>
 <div class="col py-3">
     <table>
         <thead>
@@ -59,7 +59,7 @@ if (isset($_GET['id'])) {
                     </td>
                     <td>
                         <?php
-                        $imagePath = 'assets/images/' . basename($productImage);
+                        $imagePath = '../assets/images/' . basename($productImage);
                         if (!file_exists($imagePath)) {
                             copy($productImage, $imagePath);
                         }

@@ -42,14 +42,35 @@ body {
     margin-right: 50px;
 }
 
+#edit-product-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
 #add-product-form input,
-#add-product-form textarea {
+#add-product-form textarea,
+#edit-product-form input,
+#edit-product-form textarea,
+#edit-product-form select {
     background-color: var(--color-body);
     color: #fff;
 
 }
 
-#add-product-form label {
+#edit-product-form input,
+#edit-product-form textarea,
+#edit-product-form select {
+    width: 100%;
+}
+
+
+
+
+#add-product-form label,
+#edit-product-form label {
     margin-top: 10px;
     font-weight: 600;
 }
@@ -58,6 +79,8 @@ body {
     margin-top: 10px;
 
 }
+
+
 
 .add-btn-container {
     display: flex;
@@ -118,3 +141,6 @@ tbody tr td {
 .table-header {
     width: 100%;
 }
+
+
+
