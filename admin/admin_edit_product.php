@@ -118,16 +118,16 @@ if (isset($_POST['edit_product'])) {
         let defaultInputType = newValueInput.prop('tagName').toLowerCase();
 
         $('#field_to_edit').change(function() {
-            var selectedField = $(this).val();
+            let selectedField = $(this).val();
 
             if (selectedField === 'product_description') {
-                // Change input type to "textarea" for product_description field
+                
                 newValueContainer.html('<textarea name="new_value" id="new_value"></textarea>');
             } else if (selectedField === 'product_image' || selectedField === 'product_image2' || selectedField === 'product_image3' || selectedField === 'product_image4') {
-                // Change input type to "file" for product_image fields
+                
                 newValueContainer.html('<input type="file" name="new_value" id="new_value">');
             } else {
-                // Change input type to "text" for other fields
+                
                 newValueContainer.html('<input type="' + defaultInputType + '" name="new_value" id="new_value">');
             }
         });
