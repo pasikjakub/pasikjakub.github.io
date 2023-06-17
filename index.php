@@ -11,8 +11,8 @@
 
 <section id="main" class="main" style="min-height: 1200px; margin-top: 130px; position: relative;">
     <div class="container">
-        <div class="row">
-            <div class="banner_middle">
+        <div class="banner-dflex">
+            <div class="banner_middle banner_middle_img1">
                 <div class="banner_row">
                     <div class="header">
                         <h1>Kuchnie pod zabudowe</h1>
@@ -51,7 +51,37 @@
 
         <div class="space-line"></div>
 
-
+        <div class="banner-dflex">
+            <div class="banner_middle banner_middle_img2">
+                <div class="banner_row">
+                    <div class="header">
+                        <span class="heading">Meble ogrodowe</span>
+                        <span>Aż do 50% taniej na wybrane produkty</span>
+                    </div>
+                    <button>Zamów</button>
+                </div>
+            </div>
+            <div class="banner-dflex banner_justify">
+            <div class="banner_middle_mini mini_img1">
+                <div class="banner_row">
+                    <div class="header">
+                        <span class="heading">Sprawdź <span style="color: #fff">gdzie się znajdujemy<span></span>
+                        
+                    </div>
+                    <button><i class="las la-arrow-circle-right"></i></button>
+                </div>
+            </div>
+            <div class="banner_middle_mini mini_img2">
+                <div class="banner_row">
+                    <div class="header">
+                        <span class="heading">Masz pytania?</span>
+                        <span style="font-size: 24px">Skontaktuj się z nami!</span>
+                    </div>
+                    <button><i class="las la-arrow-circle-right"></i></button>
+                </div>
+            </div>
+            </div>
+        </div>
 
         <div class="space-line"></div>
 

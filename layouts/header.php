@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarID" style="flex-grow: 0;">
                 <div class="navbar-nav navbar-functions">
                     <a class="nav-link active" aria-current="page" href="#">
-                        Kategorie
+                        Sklep
                     </a>
                     <a class="nav-link active userFunctions" aria-current="page" href="login.php">
                         <i class="las la-user"></i>
