@@ -7,7 +7,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['user_type'] == 1) {
     header('location: account.php');
     exit;
 }
-else if(isset($_SESSION['logged_in']) && $_SESSION['user_type'] == 2){
+else if(isset($_SESSION['logged_in']) && $_SESSION['user_type'] == 2 || $_SESSION['$user_type'] == 3){
     header('location: admin/admin_panel.php');
     exit;
 }
@@ -44,6 +44,9 @@ if (isset($_POST['login_btn'])) {
                 // user
                 header('location: account.php?message=zalogowano poprawnie');
             } else if ($user_type == 2) {
+                // admin
+                header('location: admin/admin_panel.php');
+            } else if ($user_type == 3) {
                 // admin
                 header('location: admin/admin_panel.php');
             } else {

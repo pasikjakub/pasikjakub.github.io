@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('admin_check_userType.php');
+include('admin_check_userTypeMod.php');
 
 
 include('../server/connection.php');
@@ -27,6 +27,7 @@ if (isset($_GET['id'])) {
 
 <?php include('../layouts/sidebar.php'); ?>
 <div class="col py-3">
+    <h2 style="margin-bottom: 50px">Usuń produkt</h2>
     <table>
         <thead>
             <tr class="table-header">

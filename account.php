@@ -8,6 +8,11 @@ if(!isset($_SESSION['logged_in'])){
     exit;
 }
 
+if($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 3){
+    header('location: admin/admin_panel.php');
+    exit;
+}
+
 if(isset($_GET['logout'])){
     if(isset($_SESSION['logged_in'])){
         unset($_SESSION['logged_in']);

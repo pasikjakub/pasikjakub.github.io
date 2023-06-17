@@ -2,7 +2,7 @@
 
 session_start();
 
-include('admin_check_userType.php');
+include('admin_check_userTypeMod.php');
 
 if(isset($_GET['logout'])){
     if(isset($_SESSION['logged_in'])){

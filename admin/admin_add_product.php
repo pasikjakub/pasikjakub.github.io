@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('admin_check_userType.php');
+include('admin_check_userTypeMod.php');
 
 include('../server/connection.php');
 
@@ -67,6 +67,7 @@ function moveAndInsertImage($file)
 <?php include('../layouts/sidebar.php'); ?>
 
 <div class="col py-3">
+<h2>Dodaj produkt</h2>
     <?php if (!empty($errors)): ?>
         <div class="error-message">
             <?php foreach ($errors as $error): ?>

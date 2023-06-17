@@ -111,7 +111,7 @@ if (isset($_POST['register'])) {
                 // }
 
                 if ($result) {
-                    header('location: account.php?login.php');
+                    header('location: login.php');
 
                     // nie zostalo utworzone
                 } else {

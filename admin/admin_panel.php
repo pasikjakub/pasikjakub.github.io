@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('admin_check_userType.php');
+include('admin_check_userTypeMod.php');
 
 include('../server/connection.php');
 

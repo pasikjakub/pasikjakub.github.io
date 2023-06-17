@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('admin_check_userType.php');
+include('admin_check_userTypeMod.php');
 
 include('../server/connection.php');
 
@@ -69,7 +69,8 @@ if (isset($_POST['edit_product'])) {
 
 <?php include('../layouts/sidebar.php'); ?>
 
-
+<div class="col py-3">
+<h2 style="margin-bottom: 50px">Edytuj produkt</h2>
 <form id="edit-product-form" method="post" action="" enctype="multipart/form-data" style="max-width: 700px">
     <label for="product_name">Wybierz produkt:</label>
     <select name="product_name" id="product_name">
@@ -109,6 +110,7 @@ if (isset($_POST['edit_product'])) {
 
     <button class="btn btn-primary" type="submit" name="edit_product" value="Edit Product">Edytuj</button>
 </form>
+</div>
 
 <script>
     // Update input type based on the selected field
