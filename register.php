@@ -111,7 +111,7 @@ if (isset($_POST['register'])) {
                 // }
 
                 if ($result) {
-                    header('location: login.php');
+                    header('location: login.php?message=Musisz aktywować swoje konto');
 
                     // nie zostalo utworzone
                 } else {

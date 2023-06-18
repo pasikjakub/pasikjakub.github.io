@@ -43,7 +43,7 @@ if (isset($_GET['delete_id'])) {
     $stmt->execute();
 
 
-    header('Location: admin_search_user.php');
+    header('Location: admin_search_user.php?message=Poprawnie usunięto użytkownika');
     exit;
 }
 ?>
@@ -56,6 +56,17 @@ if (isset($_GET['delete_id'])) {
         <input type="email" id="search_email" name="search_email" required>
         <button class="btn btn-primary" type="submit" name="search">Szukaj</button>
     </form>
+    <p <?php if (isset($_GET['error'])) {
+        echo 'style="color: red"';
+    }else {
+        echo 'style="color: green"';
+    } ?>>
+                    <?php if (isset($_GET['error'])) {
+                        echo $_GET['error'];
+                    }else if(isset($_GET['message'])){
+                        echo $_GET['message'];
+                    } ?>
+                </p>
     <table style="margin-top: 50px;">
         <thead>
             <tr>

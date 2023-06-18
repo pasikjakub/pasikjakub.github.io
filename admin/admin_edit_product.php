@@ -113,7 +113,7 @@ if (isset($_POST['edit_product'])) {
 </div>
 
 <script>
-    // Update input type based on the selected field
+
     $(document).ready(function() {
         let newValueContainer = $('#new_value_container');
         let newValueInput = $('#new_value');

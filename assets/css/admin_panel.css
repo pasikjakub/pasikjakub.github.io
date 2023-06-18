@@ -42,7 +42,8 @@ body {
     margin-right: 50px;
 }
 
-#edit-product-form {
+#edit-product-form,
+#edit-user-form {
     display: flex;
     flex-direction: column;
     margin-left: 50px;
@@ -54,7 +55,8 @@ body {
 #add-product-form textarea,
 #edit-product-form input,
 #edit-product-form textarea,
-#edit-product-form select {
+#edit-product-form select,
+#edit-user-form input {
     background-color: var(--color-body);
     color: #fff;
 
@@ -64,6 +66,10 @@ body {
 #edit-product-form textarea,
 #edit-product-form select {
     width: 100%;
+}
+
+#edit-user-form {
+    max-width: 700px;
 }
 
 
@@ -143,4 +149,17 @@ tbody tr td {
 }
 
 
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: -webkit-line-clamp 0.3s ease;
+}
 
+.description:hover {
+    -webkit-line-clamp: initial;
+}
+.product-table tr:nth-child(even) {
+    background-color: #414a52;
+}

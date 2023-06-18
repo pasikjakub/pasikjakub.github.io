@@ -34,7 +34,7 @@ if (isset($_POST['add-to-cart'])) {
         else {
 
             echo '<script>alert("Produkt został dodany już do koszyka")</script>';
-            // echo '<script>window.location="index.php"</script>';
+            
         }
 
 

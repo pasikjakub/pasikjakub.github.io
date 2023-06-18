@@ -31,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute()) {
 
-            header('Location: admin_remove_product.php');
+            header('Location: admin_remove_product.php?message=Poprawno dodano produkt');
             exit();
         } else {
 
-            $errors[] = "Failed to add the product. Please try again.";
+            $errors[] = "";
         }
 
 

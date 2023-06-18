@@ -79,9 +79,15 @@ if (isset($_POST['login_btn'])) {
         <div class="container">
             <h1>Logowanie</h1>
             <form id="login-form" method="POST" action="login.php">
-                <p style="color: red;">
+            <p <?php if (isset($_GET['error'])) {
+        echo 'style="color: red"';
+    }else {
+        echo 'style="color: green"';
+    } ?>>
                     <?php if (isset($_GET['error'])) {
                         echo $_GET['error'];
+                    }else if(isset($_GET['message'])){
+                        echo $_GET['message'];
                     } ?>
                 </p>
                 <div class="form-group">

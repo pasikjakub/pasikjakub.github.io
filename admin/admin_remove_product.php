@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
     $query->close();
 
     
-    header('Location: admin_remove_product.php');
+    header('Location: admin_remove_product.php?message=Poprawno usunięto produkt');
     exit;
 }
 ?>
@@ -28,6 +28,17 @@ if (isset($_GET['id'])) {
 <?php include('../layouts/sidebar.php'); ?>
 <div class="col py-3">
     <h2 style="margin-bottom: 50px">Usuń produkt</h2>
+    <p <?php if (isset($_GET['error'])) {
+        echo 'style="color: red"';
+    }else {
+        echo 'style="color: green"';
+    } ?>>
+                    <?php if (isset($_GET['error'])) {
+                        echo $_GET['error'];
+                    }else if(isset($_GET['message'])){
+                        echo $_GET['message'];
+                    } ?>
+                </p>
     <table>
         <thead>
             <tr class="table-header">
