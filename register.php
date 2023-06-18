@@ -62,32 +62,7 @@ if (isset($_POST['register'])) {
 
             //jesli nie ma
         } else {
-            try {
-                
-                $mail = new PHPMailer();
-                $mail->isSMTP();
-                //$mail->SMTPDebug = SMTP::DEBUG_SERVER; //do wyswietlania bledów jak dziala mozna pozniej zakomentowac
-
-                $mail->Host = 'smtp.gmail.com';
-                $mail->Port = 465;
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                $mail->SMTPAuth = true;
-
-                $mail->Username = 'projektsklepmeblowy@gmail.com';
-                $mail->Password = 'lefyyjqunjyjwzjw';
-
-                $mail->CharSet = 'UTF-8';
-                $mail->setFrom('no-reply@domena.pl', 'Sklep meblowy');
-                $mail->addAddress($email);
-                $mail->addReplyTo('biuro@domena.pl', 'Biuro');
-
-                $mail->isHTML(true);
-                $mail->Subject = "Aktywuj swoje konto";
-                
-
-                $mail->Body = 'Aby aktywować swoje konto, kliknij poniższy link:<br><a href="' . $activationLink . '">' . $activationLink . '</a>';
-
-                $mail->send();
+      
 
                 //tworzenie uzytkownika
                 $q = $db->prepare("INSERT INTO users VALUES (NULL, ?, ?, ?, 1, 0, ?)");
@@ -111,6 +86,32 @@ if (isset($_POST['register'])) {
                 // }
 
                 if ($result) {
+
+                    $mail = new PHPMailer();
+                    $mail->isSMTP();
+                    //$mail->SMTPDebug = SMTP::DEBUG_SERVER; //do wyswietlania bledów jak dziala mozna pozniej zakomentowac
+    
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->Port = 465;
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                    $mail->SMTPAuth = true;
+    
+                    $mail->Username = 'projektsklepmeblowy@gmail.com';
+                    $mail->Password = 'lefyyjqunjyjwzjw';
+    
+                    $mail->CharSet = 'UTF-8';
+                    $mail->setFrom('no-reply@domena.pl', 'Sklep meblowy');
+                    $mail->addAddress($email);
+                    $mail->addReplyTo('biuro@domena.pl', 'Biuro');
+    
+                    $mail->isHTML(true);
+                    $mail->Subject = "Aktywuj swoje konto";
+                    
+    
+                    $mail->Body = 'Aby aktywować swoje konto, kliknij poniższy link:<br><a href="' . $activationLink . '">' . $activationLink . '</a>';
+    
+                    $mail->send();
+                    
                     header('location: login.php?message=Musisz aktywować swoje konto');
 
                     // nie zostalo utworzone
@@ -118,9 +119,6 @@ if (isset($_POST['register'])) {
                     header('location: register.php?error=Coś poszło nie tak');
                 }
 
-            } catch (Exception $error) {
-                echo "Błąd wysyłania maila: {$mail->ErrorInfo}";
-            }
 
 
         }

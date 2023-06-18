@@ -1,4 +1,4 @@
 <?php 
-    $db = new mysqli("localhost", "root", "", "shopProject");  
+    $db = new mysqli("localhost", "root", "", "sklepmeblowy");  
         
 ?>

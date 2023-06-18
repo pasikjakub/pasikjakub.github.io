@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-light navbar-style">
         <div class="container-fluid nav-container">
-            <a class="navbar-brand" href="index.php">Logo</a>
+            <a style="color: #ed2083; font-weight: bold" class="navbar-brand" href="index.php">Sklep meblowy</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarID"
                 aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
