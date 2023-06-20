@@ -1,1 +1,1 @@
-# pasikjakub.github.io
+# Projekt sklepu meblowego
