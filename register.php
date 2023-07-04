@@ -96,8 +96,8 @@ if (isset($_POST['register'])) {
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
                     $mail->SMTPAuth = true;
     
-                    $mail->Username = 'projektsklepmeblowy@gmail.com';
-                    $mail->Password = 'lefyyjqunjyjwzjw';
+                    $mail->Username = '';
+                    $mail->Password = '';
     
                     $mail->CharSet = 'UTF-8';
                     $mail->setFrom('no-reply@domena.pl', 'Sklep meblowy');
